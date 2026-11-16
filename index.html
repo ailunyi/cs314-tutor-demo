@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <style>body{margin:0}img{max-width:100%}</style>
 <title>CS 314 Tutor Demo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -17,8 +18,21 @@
     --display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     --body: "Inter", "Segoe UI", system-ui, sans-serif;
   }
-  /* One look for every visitor: the beige page, whatever the phone's theme. */
-  :root { color-scheme: light; }
+  /* Follows the visitor's system theme: beige in light mode, warm near-black in dark mode. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f0e0c; --surface: #1b1916; --surface-2: #23201c; --text: #f2efe8; --muted: #b9b1a2; --faint: #948b7b;
+      --line: #37322b; --gold-ink: #e5c65a; --gold-soft: #2e2710; --gold-line: #6b5a1c;
+      --ours: #3987e5; --base: #8d8a83; --model-bg: #15263b; --model-line: #2c4a6e;
+      --bar-bg: #060605; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f0e0c; --surface: #1b1916; --surface-2: #23201c; --text: #f2efe8; --muted: #b9b1a2; --faint: #948b7b;
+    --line: #37322b; --gold-ink: #e5c65a; --gold-soft: #2e2710; --gold-line: #6b5a1c;
+    --ours: #3987e5; --base: #8d8a83; --model-bg: #15263b; --model-line: #2c4a6e;
+    --bar-bg: #060605; color-scheme: dark;
+  }
   * { box-sizing: border-box; }
   body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6;
     -webkit-font-smoothing: antialiased; }
